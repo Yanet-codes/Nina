@@ -19,7 +19,7 @@ section{
 }
 .recommendedsongs{
     grid-column: 2/3;
-    border: solid 1px black;
+    border-left: solid 1px black;
     padding: 10px;
 }
 /*
