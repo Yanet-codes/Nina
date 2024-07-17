@@ -1,0 +1,76 @@
+main{
+    display: grid;
+    gap: 10px;
+    grid-template-columns:  auto auto auto ;
+    border: solid 2px black;
+}
+main nav{
+    border-right: solid #474545 1px;
+    grid-column: 1/2;
+}
+section{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column: 2/3;
+    gap: 10px;
+}
+.content{
+    grid-column: 1/2;
+}
+.recommendedsongs{
+    grid-column: 2/3;
+    border: solid 1px black;
+    padding: 10px;
+}
+/*
+section div:nth-child(1){
+    padding: 10px;
+    border: 2px solid rgb(79 185 227);
+    border-radius: 5px;
+}
+section div h1{
+    padding: 10px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+}
+section div:nth-child(2){
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid rgb(79 185 227);
+    border-radius: 5px;
+}
+
+section div:nth-child(3){
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid rgb(79 185 227);
+    border-radius: 5px;
+}
+section div:nth-child(4){
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid rgb(79 185 227);
+    border-radius: 5px;
+}
+section div:nth-child(5){
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid rgb(79 185 227);
+    border-radius: 5px;
+}
+section div:nth-child(6){
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid rgb(79 185 227);
+    border-radius: 5px;
+}section div:nth-child(7){
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid rgb(79 185 227);
+    border-radius: 5px;
+}section div:nth-child(8){
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid rgb(79 185 227);
+    border-radius: 5px;
+}
