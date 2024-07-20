@@ -8,7 +8,7 @@
     <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <title>CSS MEGA-PROJECT</title>
 </head>
-<body background="images\pr38.png">
+<body background="images\pr40.png">
     <main>
         <nav>
             <div>
@@ -18,54 +18,54 @@
                 </div>
                 <div>
                     <ul>
-                        <i class="fa-solid fa-map"></i><a href="#Discover"></a><br><br>
-                        <i class="fa-solid fa-arrow-trend-up"></i><a href="#Trending"></a><br><br>
-                        <i class="fa-solid fa-compact-disc"></i><a href="#Album"></a><br><br>
-                        <i class="fa-solid fa-circle-play"></i><a href="#Playlists"></a><br><br>
-                        <i class="fa-solid fa-heart"></i><a href="#Favorites"></a><br><br>
+                        <li><i class="fa-solid fa-map"></i><a href="#Discover"></a></li>
+                        <li><i class="fa-solid fa-arrow-trend-up"></i><a href="#Trending"></a></li>
+                        <li><i class="fa-solid fa-compact-disc"></i><a href="#Album"></a></li>
+                        <li><i class="fa-solid fa-circle-play"></i><a href="#Playlists"></a></li>
+                        <li><i class="fa-solid fa-heart"></i><a href="#Favorites"></a></li>
                     </ul>
                 </div>
             </div>
-           <!--<ul>
-                <li><a href="#Profile"></a></li>
-                <li><a href="#Settings"></a></li>
-                <li><a href="#Logout"></a></li> 
-            </ul> --> 
+            <ul>
+                <li><i class="fa-regular fa-user"></i><a href="#Profile"></a></li>
+                <li><i class="fa-solid fa-gear"></i><a href="#Settings"></a></li>
+                <li><i class="fa-solid fa-right-to-bracket"></i><a href="#Logout"></a></li> 
+            </ul>
         </nav> 
         <section>
             <div class="content">
-                <div class="carousel">
+                <div>
                     <h1>Popular Playlists</h1>
                     <div>
-                        <div class="container carousel" aria-label="Gallery">
-                            <div>
+                        <div class="popular">
+                            <div class="popularplaylists">
                                 <img src="images\rock.png" alt="Guitar">
                                 <div>
                                     <h2>Midnight Moods</h2>
-                                    <button class="ema">Listen Now
-                                        <i class="fa-regular fa-circle-play"></i>
-                                    </button>
                                 </div>
+                                <button class="ema">Listen Now
+                                    <i class="fa-regular fa-circle-play"></i>
+                                </button>
                             </div>    
-                            <div>
+                            <div class="popularplaylists">
                                 <img src="images\party.png" alt="party">
                                 <div>
                                     <h2>Party Starters</h2>
-                                    <button class="ema">Listen Now
-                                        <i class="fa-regular fa-circle-play"></i>
-                                    </button>
                                 </div>
+                                <button class="ema">Listen Now
+                                    <i class="fa-regular fa-circle-play"></i>
+                                </button>
                             </div>
-                            <div>
+                            <div class="popularplaylists">
                                 <img src="images\pr4.png" alt="Guitar">
                                 <div>
                                     <h2>Relaxing Tones</h2>
-                                    <button class="ema">Listen Now
-                                        <i class="fa-regular fa-circle-play"></i>
-                                    </button>
                                 </div>
+                                <button class="ema">Listen Now
+                                    <i class="fa-regular fa-circle-play"></i>
+                                </button>
                             </div>
-                            <div>
+                            <div class="popularplaylists">
                                 <img src="images\pr5.png" alt="Guitar">
                                 <div>
                                     <h2>Smooth Jazz Journeys</h2>
@@ -74,7 +74,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div>
+                            <div class="popularplaylists">
                                 <img src="images\pr6.png" alt="Guitar">
                                 <div>
                                     <h2>Uplifting Rhythms</h2>
@@ -124,10 +124,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="recommendedalbums">
+                <div>
                     <h1>Recomended Albums</h1>
-                    <div>
-                        <div>
+                    <div class="popular">
+                        <div class="popularplaylists">
                             <div>
                                 <img src="Images\pr15.png" alt="">
                             </div>
@@ -136,7 +136,7 @@
                                 <p>Drake</p>
                             </div>
                         </div>
-                        <div>
+                        <div class="popularplaylists">
                             <div>
                                 <img src="Images\pr16.png" alt="">
                             </div>
@@ -145,7 +145,7 @@
                                 <p>Taylor Swift</p>
                             </div>
                         </div>
-                        <div>
+                        <div class="popularplaylists">
                             <div>
                                 <img src="Images\pr17.png" alt="">
                             </div>
@@ -154,7 +154,7 @@
                                 <p>Lana Del Rey</p>
                             </div>
                         </div>
-                        <div>
+                        <div class="popularplaylists">
                             <div>
                                 <img src="Images\pr18.png" alt="">
                             </div>
@@ -163,7 +163,7 @@
                                 <p>Miley Cyrus</p>
                             </div>
                         </div>
-                        <div>
+                        <div class="popularplaylists">
                             <div>
                                 <img src="Images\pr19.png" alt="">
                             </div>
@@ -298,17 +298,17 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div class="playing">
                     <div>
-                        <span></span>
+                        <span><img src="images\pr41.png" alt=""></span>
                     </div>
                     <h2>Redemption</h2>
                     <p>Besomorph & Coopex</p>
                     <input type="range">
                     <div>
-                        <button><i></i></button>
-                        <button><i></i></button>
-                        <button><i></i></button>
+                        <button><i class="fa-solid fa-backward"></i></button>
+                        <button><i class="fa-solid fa-pause"></i></button>
+                        <button><i class="fa-solid fa-forward"></i></button>
                     </div>
                 </div>
             </div>   

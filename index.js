@@ -8,8 +8,13 @@ if (customerLoyalty="bronze"){
 }else{
   console.log("No discount for unknown loyality level")
 }*/
-function toCelsius(fahrenheit) {
-  return (5/9) * (fahrenheit-32);
+function sum(...args) {
+  let sum = 0;
+  for (let arg of args)
+  { 
+sum += arg;
+  return sum;
+  }
+x = sum(4, 9, 16, 25, 29, 100, 66, 77);
 }
-
-let value = toCelsius(77);
+console.log(x)
