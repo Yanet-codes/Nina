@@ -1,12 +1,16 @@
+html{
+  position: relative;
+}
 body{
   border-radius: 10px;
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  position: relative;
 }
 main{
   display: grid;
-  margin: 3%;
+  margin: 2%;
   grid-template-columns:  11% 89%;
   border-radius: 10px;
   background: linear-gradient(135deg, rgba(255,255,255,0.1),rgba(255,255,255,0));
@@ -63,8 +67,31 @@ section{
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+width: 100%;
 }
-.popular{
+swiper-container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 100%;
+}
+
+swiper-slide {
+  width: 300px;
+  height: 300px;
+}
+
+swiper-slide img {
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  border-radius: 10px;
+  width: 400px;
+  height: 250px;
+  color: white; 
+  border: 2px solid rgba(159, 160, 168, 0.5);
+  display: block;
+}
+/*.popular{
 display: flex;
 flex-direction: row;
 overflow-x: scroll;
@@ -72,18 +99,25 @@ overflow-y: hidden;
 height: 300px;
 cursor: grab;
 }
+.popularplaylists{
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
 .popularplaylists img{
   position: relative;
   border-radius: 10px;
-  margin-right: 10px;
   margin-top: 10px;
   width: 400px;
   height: 250px;
   color: white; 
   border: 2px solid rgba(159, 160, 168, 0.5);
-}
-.popularplaylists h2{
-margin-top: -25%;
+  margin-right: 10px;
+  display: block;
+}*/
+swiper-slide h2{
+  margin-bottom: 20%;
 margin-left: 5%;
 position: relative;
 }
@@ -94,21 +128,34 @@ backdrop-filter: blur(2px);
 border-radius: 10px;
 border: 1px solid rgba(255,255,255,0.18);
 box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
-width: 30%;/*130*/
+width: 40%;/*130*/
 height: 15%;/*40px*/
 font-size: medium;
 color: white;
 align-items: baseline;
 justify-content: center;
-position: relative;
+position: absolute;
 margin-top: 0;
 margin-left: 5%;
 transition: transform 1s ease;
 }
-.popularplaylists button:hover{
+swiper-slide button:hover{
 background-color: white;
 color: black;
 transform: scale(1.1);
+}
+.slide-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  row-gap: 12px;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 98%;
+  border-radius: 20px;
+  margin-top: -25%;
 }
 
 /*Featured artists*/
@@ -203,18 +250,15 @@ cursor: grab;
 }
 
 /* Containers Scrollbar Style */
-.popular::-webkit-scrollbar,
 .featured-artists::-webkit-scrollbar,
 .album-container::-webkit-scrollbar {
   height: 10px;
 }
-.popular::-webkit-scrollbar-track,
 .featured-artists::-webkit-scrollbar-track,
 .album-container::-webkit-scrollbar-track {
   box-shadow: inset 0 0 0.3rem rgb(79, 78, 78);
   border-radius: 40px;
 }
-.popular::-webkit-scrollbar-thumb,
 .featured-artists::-webkit-scrollbar-thumb,
 .album-container::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 0.5rem rgb(116, 116, 116);
@@ -261,8 +305,8 @@ cursor: grab;
   justify-content: center;
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  width: 65px;
+  height: 65px;
   background-color: rgba(169, 150, 253, 0.6);
   border-radius: inherit;
   font-size: 1.75rem;
@@ -299,7 +343,7 @@ cursor: grab;
   text-align: center;
  /* padding-left: 15%;
   padding-right: 15%;*/
-  width: 100%;
+  width: 90%;
   height: 350px;
 }
 .playing img{
