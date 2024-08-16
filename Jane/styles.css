@@ -1,0 +1,85 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    transition: all 1s;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1),rgba(255,255,255,0));
+    backdrop-filter: blur(100px);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.topic-form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 20px ;
+}
+
+i {
+    padding: 10px;
+    background-color: rgba(44, 44, 44, 0.6);
+    border-radius: 60%;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+}
+
+i:hover {
+    background-color: rgba(44, 44, 44, 0.9);
+    box-shadow: 0 4px 8px 0 rgba(168, 156, 156, 0.9), 0 4px 8px 0 rgba(168, 156, 156, 0.9);
+}
+.is{
+    background-color: none;
+}
+.topic {
+    border: 3px solid grey;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.topic-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.add-comment {
+    margin-top: 10px;
+}
+
+.comment-form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-form input[type="text"] {
+    margin-bottom: 5px;
+}
+.comment{
+    display: none;
+}
+.fa-comment-dots:active{
+    display: inline;
+}
