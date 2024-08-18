@@ -1,4 +1,7 @@
 /* styles.css */
+*{
+    position: relative;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,7 +13,19 @@ body {
     color: white;
     transition: all 1s;
 }
-
+nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px;
+    width: 50%;
+    height: auto;
+    }
+    nav a{
+    text-decoration: none;
+    color: white;
+    padding: 7px 12px;
+    }
 .container {
     width: 80%;
     margin: auto;

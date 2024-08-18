@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Document</title>
     <style>
-        .cardd{
+nav {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+border-radius: 10px;
+background: linear-gradient(135deg, rgba(255,255,255,0.1),rgba(255,255,255,0));
+backdrop-filter: blur(0.3px);
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+margin: 20px;
+width: 50%;
+height: auto;
+}
+nav a{
+text-decoration: none;
+color: white;
+padding: 7px 12px;
+}
+nav a:hover{
+cursor: pointer;
+border-radius: 10px;
+transition: 0.4s;
+transform: scale(1.1);
+}
+.cardd{
   overflow-y: scroll;
   border-radius: 10px;
   background: linear-gradient(135deg, rgba(255,255,255,0.1),rgba(255,255,255,0));
@@ -14,27 +39,35 @@
   border: 1px solid rgba(255,255,255,0.18);
   box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
   color: white; 
+  padding: 5%;
+  margin: 5%;
 }
 .cardd::-webkit-scrollbar {
   height: 10px;
 }
 #myVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%; 
-    min-height: 100%;
-  }
+position: fixed;
+right: 0;
+bottom: 0;
+min-width: 100%; 
+min-height: 100%;
+}
     </style>
 </head>
 <body>
     <video autoplay muted loop id="myVideo">
         <source src="lapse1.mp4">
     </video>
-    <div background="images\pr44.png" class="w-50 cardd">
+    <nav>
+        <a href="website.html">Home</a>
+        <a href="home.html">Community</a>
+        <a href="Initiatives.html">Projects</a>
+        <a href="#website.html">Resources</a>
+        <a href="#about-us" >About Us</a>
+    </nav>
+    <div background="images\pr44.png" class="cardd">
         <h1 class="text-center">Internal Projects</h1>
-        <div>
-          <table id="tablepress-4" class="tablepress tablepress-id-4 dataTable no-footer card-text" aria-describedby="tablepress-4_info">
+        <table id="tablepress-4" class="tablepress tablepress-id-4 dataTable no-footer card-text" aria-describedby="tablepress-4_info">
             <thead>
                 <tr class="row-1 odd headers">
                     <th class="column-1 sorting" tabindex="0" aria-controls="tablepress-4" rowspan="1" colspan="1" aria-label="No: activate to sort column ascending" style="width: 160.604px;">No</th>
@@ -76,8 +109,7 @@
                 <tr class="row-45 even"><td class="column-1">9</td><td class="column-2">Understanding the role of external forcing factors on the occurrence of ionospheric</td><td class="column-3"></td><td class="column-4">Dr. Teshome Dugassa (PI)</td><td class="column-5">1/3/2021</td><td class="column-6">1/9/2023</td></tr><tr class="row-3 odd"><td class="column-1">1</td><td class="column-2">Theoretical models of mass transfer in Algol-type eclipsing binaries</td><td class="column-3"></td><td class="column-4">Dr. Seblu Humne</td><td class="column-5">Dec-19</td><td class="column-6">Jun-22</td></tr><tr class="row-36 even"><td class="column-1">5</td><td class="column-2">The synergistic impacts of heatwaves or droughts and urban heat islands on the availability and quality of water in the greater horn of Africa</td><td class="column-3"></td><td class="column-4">Dr. Gemechu Fanta</td><td class="column-5">1/1/2020</td><td class="column-6">31/11/2022</td></tr><tr class="row-50 odd"><td class="column-1">12</td><td class="column-2">The study of ionospheric structures using machine learning approach and model predictions.</td><td class="column-3"></td><td class="column-4">Dr. Ephrem Beshir</td><td class="column-5">Oct-21</td><td class="column-6">Jul-23</td></tr><tr class="row-48 even"><td class="column-1">11</td><td class="column-2">Techno-Economic Analysis of Space And/Or Ground Based Augmentation System in Ethiopia: Project Concept Note and Feasibility Study Development</td><td class="column-3"></td><td class="column-4">Dr. Nigussie Mezgebe (PI)</td><td class="column-5">Oct-21</td><td class="column-6">Jul-22</td></tr><tr class="row-6 odd"><td class="column-1">4</td><td class="column-2">Study of cosmic acceleration and large-scale structure formation us-ing SNIa, BAO and GRB data in modified gravity theories</td><td class="column-3"></td><td class="column-4">Dr. Shambel Sahlu</td><td class="column-5">Oct-21</td><td class="column-6">Dec-23</td></tr><tr class="row-57 even"><td class="column-1">3</td><td class="column-2">Space port site selection</td><td class="column-3"></td><td class="column-4">Mr. Lijalem G/ Hiwot</td><td class="column-5">23/12/2020</td><td class="column-6">31/12/21</td></tr><tr class="row-38 odd"><td class="column-1">7</td><td class="column-2">Space Physics Text Book</td><td class="column-3"></td><td class="column-4">Dr. Ephrem Beshir</td><td class="column-5">30/10/2020</td><td class="column-6">30/12/2021</td></tr>
             </tbody>
         </table>
-          <a href="#" class="btn btn-primary">Browse more</a>
-        </div>
+        <button type="button" class="btn btn-success" style="margin-top: 100px;">Browse more</button>
     </div>
 </body>
 </html>
