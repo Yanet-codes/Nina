@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Da-Ya Engineering Consultancy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:italic,wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style>
+        :root {
+            --bg-dark: #0a192f;
+            --card-bg: #112240;
+            --accent: #64ffda;
+            --text-main: #ccd6f6;
+            --text-dim: #8892b0;
+            --header-white: #ffffff;
+        }
+
+        body {
+            background-color: #1c2e3b;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            transition: opacity 0.5s ease-in-out;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+
+        /* --- Header & Navigation --- */
+        .header {
+            background: var(--header-white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1002;
+            height: 100px;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            position: relative;
+        }
+
+        /* Logo Styles */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .logo-tagline {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-weight: normal;
+            margin-left: 10px;
+            padding-left: 10px;
+            border-left: 2px solid #3498db;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+        /* Define the fade-out animation */
+        .fade-out {
+        opacity: 1;
+        transition: opacity 0.5s ease-out; /* 0.5s is the duration */
+        }
+
+        /* When the class is active, the opacity drops to 0 */
+        body.fade-out {
+        opacity: 0;
+        }
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #2c3e50;
+        }
+
+        /* --- Projects Grid --- */
+        .projects-container {
+            max-width: 1200px;
+            margin: 50px auto 100px; /* Top margin accounts for fixed header */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: #2d9cdb;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100px;
+            background: #233554;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--text-dim);
+            letter-spacing: 2px;
+            text-align: center;
+            padding: 20px;
+        }
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-tag {
+            color: var(--accent);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+        /* Ensure modal text is readable against the white background */
+        .modal-content {
+            color: #2c3e50; /* Dark slate color */
+        }
+
+        .modal-header .modal-title {
+            color: #0a192f;
+            font-weight: 700;
+        }
+
+        /* Fix for potential z-index issues */
+        .modal-backdrop {
+            z-index: 1040;
+        }
+        .modal {
+            z-index: 1050;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background: #1a252f;
+            color: #ecf0f1;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .footer-heading {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background: #3498db;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #3498db;
+            padding-left: 5px;
+        }
+
+        .contact-info {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-info li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 1rem;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        .contact-info i {
+            color: #3498db;
+            margin-top: 4px;
+        }
+
+        .accreditations {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 20px 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        .accreditation {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: #95a5a6;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle { display: block; }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            .nav-menu.active { display: flex; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .accreditations { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-container">
+        <!-- Logo Area -->
+        <div class="logo-container">
+            <!--<a href="#" class="logo"><img src="download.png" style="width: 5px; color: black; height: 5px;" alt="Company Logo"></a>-->
+            <a href="#" class="logo">
+                <img src="src/download.png" alt="DAYA Engineering Consultancy" class="logo-image" style="width: 70px; height:70px;">
+            </a>
+            <span class="logo-tagline">Innovative Planning and Engineering Solutions</span>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav>
+            <button class="mobile-toggle">☰</button>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="project.html">Home</a></li>
+                    <li><a href="project.html#services">Services</a></li>
+                    <li><a href="projectsPage.html">Projects</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+        </nav>
+    </div>
+</header>
+<h1 style="
+  font-family: sans-serif;
+  font-size: 2.5rem;
+  color: white  ;
+  border-bottom: 3px solid #2d9cdb;
+  display: inline-block;
+  margin-top: 150px;
+  margin-left: 560px
+"><span>Highlights</span></h1>
+
+<main class="projects-container">
+    <div class="project-card">
+        <div class="project-image">
+            <img src="src/debrebrhan.png" alt="Debre Birhan, North Shewa Zone, ANRS" >
+        </div>
+        <div class="project-content">
+            <span class="project-tag"><br><br> </span>
+            <h3 class="project-title">Debre Birhan Asset Inventory and Asset Management Plan (AMP) preparation </h3>
+            <p class="project-desc" ><br>This project provides a comprehensive framework for urban development by establishing a robust Municipal Asset Management Plan. By progressing from the initial categorization and inventory of infrastructure to high-level geodatabase mapping and financial valuation, the initiative ensures that every city asset is accounted for and professionally assessed. The core of the service involves bridging the gap between current asset conditions and future strategic goals through detailed maintenance budgeting, three-year investment planning, and a clear implementation strategy. Ultimately, this structured approach enables the city administration to make data-driven decisions on infrastructure investments, optimize maintenance costs, and ensure the long-term sustainability of municipal services.</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                View Details
+            </button>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <div class="project-image">
+            <img src="src/gondar.png" alt=": Gondar, North Gondar Zone, ANRS" >
+        </div>
+        <div class="project-content">
+            <span class="project-tag"><br><br></span>
+            <h3 class="project-title">Gondar City Asset Inventory and Asset Management Plan (AMP) preparation </h3>
+            <p class="project-desc"><br>The undertaken methodology for the project establishes a circular, data-driven lifecycle for managing city infrastructure, beginning with the creation of a digital GIS-based foundation and an institutional framework. The process moves through a rigorous "audit phase"—compiling an exhaustive asset inventory and assessing physical conditions—before transitioning into financial planning, where replacement costs and maintenance deficits are calculated. By converting these insights into a prioritized three-year rolling program, the framework ensures that new construction and repairs are not just reactive, but strategically planned. The cycle concludes with a vital feedback loop: as projects are completed, they are integrated back into the master database, ensuring that the system evolves into a permanent, transparent, and sustainable tool for urban governance.</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1">
+                View Details
+            </button>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <div class="project-image">
+            <img src="src/kombolcha2.png" alt="Debre Birhan, North Shewa Zone, ANRS" >
+        </div>
+        <div class="project-content">
+            <span class="project-tag"><br><br></span>
+            <h3 class="project-title">Kombolcha City Asset Inventory and Asset Management Plan (AMP) preparation </h3>
+            <p class="project-desc"><br>This project establishes a comprehensive lifecycle for municipal asset management, bridging the gap between technical data collection and long-term financial planning. By integrating GIS technology with institutional oversight and a 3-year rolling budget, the framework ensures that infrastructure is not only inventoried and valued but also systematically maintained. Ultimately, the project creates a self-sustaining loop where new works and maintenance updates are continuously fed back into the central database, providing a transparent and organized roadmap for urban sustainability.</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter2">
+                View Details
+            </button>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <div class="project-image">
+            <img src="src/harrar.png" alt="Debre Birhan, North Shewa Zone, ANRS" >
+        </div>
+        <div class="project-content">
+            <span class="project-tag"><br><br></span>
+            <h3 class="project-title">Harer City Land Inventory, File Reorganization  and Adjudication</h3>
+            <p class="project-desc"><br>This project establishes a robust framework for modernizing urban land administration by integrating advanced geospatial mapping with a streamlined digital database. By systematically identifying legal land holdings, categorizing urban land use, and reorganizing archival records into an automated management system, the initiative provides the city administration with the precise data needed for informed, rational decision-making. Ultimately, through the combination of rigorous technical analysis, professional capacity building, and the development of clear implementation strategies, this project ensures a transparent and efficient land holding system that is equipped to support sustainable urban growth and improved service delivery for its residents.</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter3">
+                View Details
+            </button>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <div class="project-image">
+            Addis Ababa Sidewalk Safety and Design Improvement Plan
+        </div>
+        <div class="project-content">
+            <span class="project-tag"><br><br></span>
+            <h3 class="project-title">Addis Ababa Sidewalk Safety and Design Improvement Plan</h3>
+            <p class="project-desc"><br>Addresses sidewalk safety for pedestrians and improving transport safety for the largest group of transport users. It also raise awareness and build analytics on unsafe walking conditions to connect pedestrians, sidewalks, urban design and road safety, and form a truly multimodal integrated approach to road safety and urban design. It identifies strategies and formulates particular actions and creates framework for safe infrastructure design and promote public health and human capital development.</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter4">
+                View Details
+            </button>
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-info">
+                <a href="#" class="footer-logo">DaYa</a>
+                <p style="color: #bdc3c7; font-size: 0.9rem;">Innovative Planning and Engineering Solutions for a Sustainable Future. With over 15 years of excellence in Ethiopia.</p>
+                <div style="display: flex; gap: 15px; margin-top: 20px;">
+                    <a href="#" style="color: white;"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" style="color: white;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: white;"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Projects</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Insights</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer-heading">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Urban Planning</a></li>
+                    <li><a href="#">Infrastructure Design</a></li>
+                    <li><a href="#">Asset Management</a></li>
+                    <li><a href="#">Geo-Technical</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer-heading">Contact</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> Zefco Building, Addis Ababa</li>
+                    <li><i class="fas fa-phone"></i> +251 930 098 577</li>
+                    <li><i class="fas fa-envelope"></i> info@dayaengineering.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accreditations">
+            <div class="accreditation"><i class="fas fa-award"></i> Ministry of Urban and Infrastructure</div>
+            <div class="accreditation"><i class="fas fa-check-circle"></i> ISO Certified Standards</div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>&copy; 2026 Da-Ya Consulting Planners & Consultancy PLC.</div>
+            <div style="display: flex; gap: 20px;">
+                <a href="#" style="color: inherit; text-decoration: none;">Privacy</a>
+                <a href="#" style="color: inherit; text-decoration: none;">Terms</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile Menu Toggle logic
+    const menuBtn = document.getElementById('menuBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    menuBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        const icon = menuBtn.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
+
+    // Close menu when clicking a link (mobile)
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="color:dark-blue;">Debre Birhan Asset Inventory and Asset Management Plan (AMP) preparation </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="color:dark-blue;">
+                Narrative Description of Project: - It is a project dealing with supporting the city development through Asset Management plan. The major activities of the project include:-<br>
+                Step 1: Define the Infrastructure Categories and identify Sub-Categories<br>
+                Step 2: Build the asset management templates<br>
+                Step 3: Compile an Inventory of assets<br>
+                Step 4: Assess the condition of the assets<br>
+                Step 5: Develop a maintenance budget guide for each asset<br>
+                Step 6: Cost and value the existing asset base and its deficit<br>
+                Step 7: Measure the assets against strategic goals and objectives<br>
+                Step 8: Develop plans for new assets<br>
+                Step 9: Construct the budget for the asset management plan<br>
+                Step 10: Develop the implementation strategy for the asset management plan<br><br>
+
+                Description of Actual Services Provided by your Staff: o compile and carryout municipal asset inventory and to prepare asset management plan. The proposed asset management plan also include:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Overall City Administration’s Infrastructure Asset Inventory;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Infrastructure Asset condition assessment;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Asset map preparation;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Geodatabase establishment;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Estimated Unit Rates, Cost and Value of Assets;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Estimates of the residual cost/worth of an asset; costs/replacement rates;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Estimates of the short and medium term demand for infrastructure investments;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Estimates of the operations and maintenance costs of existing and new infrastructure;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Three years planning;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	An implementation strategy for the asset management plan; etc
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle1">Gondar City Asset Inventory and Asset Management Plan (AMP) preparation
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                The major activities of the project include: - <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Establish the GIS project and design the necessary data management structure.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Formulate the institutional framework alongside the asset management structure.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Compile a comprehensive inventory of all assets.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Perform a thorough condition assessment for the entire asset base.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Calculate the required maintenance budget and identify any existing deficits.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Determine the cost and value of the current asset base.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Cost and prioritize new works projects specifically within the CIP (Capital Improvement Plan) process.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Formally develop the Maintenance Plan.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Transition the agreed-upon CIP budget for new works and maintenance into a 3-year rolling program.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	An Oversee the transition of completed projects (new works and maintenance) into the existing assets database.
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle2">Kombolcha City Asset Inventory and Asset Management Plan (AMP) preparation </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                The major activities of the project include: - <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Build the GIS project and establish the data management structure.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Build the institutional framework and the core asset management structure.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Compile a complete inventory of assets.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Assess the condition of all documented assets.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Calculate the required maintenance budget and identify any deficits.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Cost and value the existing asset base.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Cost and prioritize new works projects specifically within the CIP (Capital Improvement Plan) process.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Formally develop the Maintenance Plan.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Convert the CIP-agreed budget for all new works and maintenance projects into a 3-year rolling program.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;	Manage the transition of all completed projects (both new and maintenance) into the existing assets database.
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle3">Harer City Land Inventory, File Reorganization  and Adjudication</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Narrative Description of Project: - It is a project dealing with supporting the city development through Asset Inventory and Asset Management Plan. The major activities of the project include:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o Identify the major problems in registration, mapping and automation of parcels owners and urban land use inventory; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o Update the base map of the city at parcel and block level using the most recent Ortho-rectified Aerial photo, Image and all available maps in the city with coordinate system of Adindan datum Clark 1880 Modified Spheroid; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o Conduct land inventory at parcel level and link spatial data and non-spatial attributes and develop geo-database;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o Identify extra land holdings occupied by owners on the title deed, Vacant State Lands, all other parcels and buffer zones delineated for different purposes within the built-up area and in the vicinity;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o Identify parcel of lands occupied legally with lawful rights and other kind of parcel holdings and develop land holding related right geo-database;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o Conduct detail land use categorization at defined urban block level;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o Conduct different analysis from data collected on the field for the purpose of helping the city administration make an informed and rationale decision on the current state of land holding system;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o In cooperation with the city Administration, reorganize the existing files (from the archive) based on City – Kebele - Neighborhood -Block –Plot/Parcel levels;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o Design simple automated file management system that would help the city administration provide the required services to its residents;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o Provide trainings to professionals who work in the Land Development and Management Agency of the city; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o Preparation of general and executive reports; and<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o Develop users guide manual and implementation strategies of the results of the analysis.
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle4">Addis Ababa Sidewalk Safety and Design Improvement Plan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                It is a project dealing with “Addis Ababa Sidewalk Safety and Design Improvement Plan” made towards addressing sidewalk safety for pedestrians and improving transport safety for the largest group of transport users. It also raise awareness and build analytics on unsafe walking conditions to connect pedestrians, sidewalks, urban design and road safety, and form a truly multimodal integrated approach to road safety and urban design. It identifies strategies and formulates particular actions and creates framework for safe infrastructure design and promote public health and human capital development.<br>
+                This consists of six main principles which contain particular actions that enable the achievement of the vision:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o	increased inclusive mobility by creating accessible streets, squares, buildings and public transport systems regardless of their age, ability, gender, income level, language, ethnic, cultural or religious background, strengthening the freedom and autonomy of all people, and contributing to social inclusion, solidarity and democracy. <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o	well-designed and maintained spaces and places for people by creating convenient and attractive environment tailored to people’s needs, and to freely enjoy the amenities of public areas in comfort and safety away from intrusive noise and pollution. <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o	improved integration of networks by the creation of connected, direct and easy to follow walking routes which are safe, comfortable, attractive and well maintained, linking their homes, shops, schools, parks, public transport interchanges, green spaces and other important destinations. <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o	supportive land-use and spatial planning by the formulation of policies which allow people to walk to most everyday services and facilities, maximizing the opportunities for walking, reducing car-dependency and contributing to community life. <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o	reduced road danger by designing streets to prevent accidents and to be enjoyable, safe and convenient for people walking, especially for people with disabilities. <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;o	less crime and fear of crime by designing and maintaining effective urban environment.  <br>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
